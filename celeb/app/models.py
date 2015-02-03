@@ -33,20 +33,15 @@ def slugify(s):
         return random.choice(string.lowercase)
     return slug
 
-class TimeStampedModel(models.Model):
-    created_on = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        abstract = True
-
-
-class Celebrity(TimeStampedModel):
+class Celebrity(models.Model):
     name = models.CharField(max_length=100)
     slug = models.CharField(max_length=100)
     twitter_username = models.CharField(max_length=100, null=True, blank=True)
     instagram_username = models.CharField(max_length=100, null=True, blank=True)
     scraper_name = models.CharField(max_length=100, null=True, blank=True)
     articles = models.ManyToManyField("Article", null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -105,7 +100,7 @@ class Celebrity(TimeStampedModel):
     def __unicode__(self):
         return self.name
 
-class CelebrityFeed(TimeStampedModel):
+class CelebrityFeed(models.Model):
     celebrity = models.ForeignKey(Celebrity, related_name='feed')
 
     target_ct = models.ForeignKey(ContentType, related_name='feed_target', null=True, blank=True)
@@ -114,12 +109,13 @@ class CelebrityFeed(TimeStampedModel):
 
     score = models.DecimalField(default=0, decimal_places=4, max_digits=10)
     date = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.celebrity.name
 
 
-class Article(TimeStampedModel):
+class Article(models.Model):
     publication = models.ForeignKey("Publication")
     title = models.CharField(max_length=255, unique=True)
     link = models.TextField()
@@ -128,6 +124,7 @@ class Article(TimeStampedModel):
     published_on = models.DateTimeField()
     slug = models.CharField(max_length=128, null=True, blank=True)
     summary = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def tag_celebrities(self, celebrities):
         found_celebrities = []
@@ -147,31 +144,34 @@ class Article(TimeStampedModel):
     def __unicode__(self):
         return self.title
 
-class Tweet(TimeStampedModel):
+class Tweet(models.Model):
     celebrity = models.ForeignKey(Celebrity, related_name='tweets')
     url = models.CharField(max_length=100)
     text = models.TextField()
     image_url = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.image_url
 
 
-class InstagramPost(TimeStampedModel):
+class InstagramPost(models.Model):
     celebrity = models.ForeignKey(Celebrity, related_name='instagram_posts')
     url = models.CharField(max_length=100)
     caption = models.TextField()
     image_url = models.CharField(max_length=255)
     published_on = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.image_url
 
-class Publication(TimeStampedModel):
+class Publication(models.Model):
     name = models.CharField(max_length=64, unique=True)
     short_name = models.CharField(max_length=32, blank=True, null=True)
     link = models.CharField(max_length=255, blank=True, null=True)
     rss_feed = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta():
         ordering = ('name',)
