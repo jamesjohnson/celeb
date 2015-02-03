@@ -1,4 +1,5 @@
 lib
+celeb/settings.py
 *.pyc
 .sass-cache/
 share/
