@@ -79,6 +79,9 @@ class Celebrity(models.Model):
             if hasattr(media.caption, 'text'):
                 photo.caption=media.caption.text
             photo.save()
+            type = ContentType.objects.get_for_model(self)
+            CelebrityFeed.objects.get_or_create(celebrity=self,
+                    target_ct=type, target_id=self.id,date=self.created_on)
 
     @property
     def organized_feed(self):
@@ -189,6 +192,7 @@ class Publication(models.Model):
             link = item.get('link')
             page = requests.get(link)
             root = lxml.html.fromstring(page.content)
+            img = None
             try:
                 img = root.xpath('/html/head/meta[@property="og:image"][1]/@content')[0]
             except Exception, e:
