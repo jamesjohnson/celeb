@@ -87,7 +87,7 @@ class Celebrity(models.Model):
     def organized_feed(self):
         feed = self.feed.all()
         instagram_posts = feed.filter(target_ct__name='instagram post')[:4]
-        articles = feed.filter(target_ct__name='article')
+        articles = feed.filter(target_ct__name='article').exclude(target__image_url=None)[:15]
         return sorted(
                 chain(instagram_posts, articles),
                 key=lambda instance: instance.date, reverse=True)
