@@ -15,11 +15,10 @@ urlpatterns = patterns('',
         name='celebrity'),
 )
 
-if settings.DEBUG:
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-   )
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += patterns('',
+	url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+	    'document_root': settings.STATIC_ROOT,
+	}),
+)
