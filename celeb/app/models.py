@@ -137,7 +137,7 @@ class Article(models.Model):
             celebrity.articles.add(self)
             type = ContentType.objects.get_for_model(self)
             CelebrityFeed.objects.get_or_create(celebrity=celebrity,
-                    target_ct=type, target_id=self.id)
+                    target_ct=type, target_id=self.id,date=self.published_on)
         return len(found_celebrities)
 
 
