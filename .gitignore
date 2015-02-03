@@ -1,0 +1,7 @@
+lib
+*.pyc
+.sass-cache/
+share/
+.Python
+bin
+include

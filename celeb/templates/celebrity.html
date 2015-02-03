@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='wrapper'>
+  <div class='content'>
+    <h1>{{ celebrity.name }} News!</h1>
+    {% for article in articles %}
+    {% if article.target_ct.name == 'article' %}
+    <div class='article'>
+      <div class='image-holder'>
+        <img src='{{ article.target.image_url }}' />
+      </div>
+      <div class='lower'>
+        <h3>{{ article.target.title }}</h3>
+        <p>{{ article.target.publication.name }}</p>
+      </div>
+      <div class='clear'></div>
+    </div>
+    {% else %}
+    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="{{ article.target.url }}" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_top">{{ article.target.caption }}</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by What Sarah Knows (@sarahjrose) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-01-29T18:46:59+00:00">Jan 29, 2015 at 10:46am PST</time></p></div></blockquote>
+    {% endif %}
+    {% endfor %}
+  <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+  </div>
+  <div class='sidebar'>
+    <div class='item'>
+      <h4>Follow {{ celebrity.name }} on Facebook</h4>
+      <div class="fb-like"></div>
+    </div>
+    <div class='item'>
+      <h4>Check Out Other Celebs</h4>
+      {% for celebrity in other_celebs %}
+      <a href='{{ celebrity.get_absolute_url }}'><button class='celebrity'><i class='fa fa-star'></i> {{ celebrity.name }}</button></a>
+      {% endfor %}
+    </div>
+    <div class='item'>
+      <h4>Follow Celebrity Signal</h4>
+      <h5><i class='fa fa-facebook'></i> Like us on <a href=''>Facebook</a></h5>
+      <h5><i class='fa fa-instagram'></i> Follow us on <a href=''>Instagram</a></h5>
+      <h5><i class='fa fa-google-plus'></i> Add to Circles on <a href=''>Google +</a></h5>
+      <h5><i class='fa fa-twitter'></i> Follow us on <a href=''>Twitter</a></h5>
+    </div>
+  </div>
+  <div class='clear'></div>
+</div>
+{% endblock %}

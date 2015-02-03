@@ -1,0 +1,175 @@
+div.clear {
+  clear: both;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Quicksand", sans-serif;
+}
+
+div.wrapper {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  height: 60px;
+  background: #2196f3;
+}
+header h1 {
+  color: #fff;
+  display: inline-block;
+  float: left;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 18px;
+}
+header h1 span {
+  color: #F2F8FD;
+  font-weight: 100;
+  font-family: "Quicksand", sans-serif;
+}
+header nav {
+  margin-top: 18px;
+  margin-left: 50px;
+  display: inline-block;
+  float: left;
+}
+header nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+header nav ul li a {
+  color: #fff;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+header div.social {
+  float: right;
+  margin-top: 18px;
+}
+header div.social ul li {
+  display: inline;
+  padding: 0 0px 0 10px;
+}
+header div.social ul li a {
+  color: #fff;
+}
+
+div.content {
+  padding: 20px 20px;
+  width: 620px;
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  margin-top: 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  float: left;
+}
+div.content iframe {
+  margin-bottom: 40px !important;
+}
+div.content h1 {
+  color: #113196;
+  font-size: 30px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+div.content div.article {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 40px;
+}
+div.content div.article div.image-holder {
+  position: relative;
+  float: left;
+  width: 270px;
+  height: 200px;
+  overflow: hidden;
+}
+div.content div.article div.image-holder img {
+  width: 100%;
+}
+div.content div.article div.lower {
+  float: right;
+  width: 330px;
+  padding: 10px;
+}
+div.content div.article div.lower h3 {
+  color: #525252;
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0 30px 5px;
+}
+div.content div.article div.lower p {
+  color: #aaa;
+  font-family: "Quicksand", sans-serif;
+  font-weight: normal;
+  padding: 0px 30px;
+}
+
+div.sidebar {
+  width: 270px;
+  float: right;
+  margin-top: 30px;
+}
+div.sidebar div.item {
+  padding: 20px;
+}
+div.sidebar div.item h4 {
+  color: #525252;
+  font-family: "Quicksand", sans-serif;
+  font-size: 15px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+div.sidebar div.item h5 {
+  color: #aaa;
+  font-weight: 100;
+  font-size: 13px;
+  padding: 10px 8px;
+  text-transform: uppercase;
+}
+div.sidebar div.item h5 a, div.sidebar div.item h5 i {
+  color: #2196f3;
+  text-decoration: none;
+}
+div.sidebar div.item button.celebrity {
+  background: #2196f3;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  width: 250px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0;
+  margin: 5px 0;
+}
